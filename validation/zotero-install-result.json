@@ -1,0 +1,15 @@
+{
+  "version": "10.0.2",
+  "old": {
+    "error": -3,
+    "state": 4
+  },
+  "new": {
+    "error": 0,
+    "state": 3,
+    "appDisabled": false,
+    "active": true,
+    "registered": true,
+    "cleanedUp": true
+  }
+}
