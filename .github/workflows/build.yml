@@ -1,0 +1,34 @@
+name: Test and build plugin
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check JavaScript syntax
+        run: |
+          node --check src/bootstrap.js
+          node --check src/core.js
+      - name: Run tests
+        run: node tests/core.test.cjs
+      - name: Build installable plugin
+        run: python build.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: science-lens-plugin
+          path: dist/*.xpi
+          if-no-files-found: error
