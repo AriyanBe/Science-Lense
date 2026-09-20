@@ -1,4 +1,4 @@
-# 0.1.1 validation — 2026-09-17
+# 1.0.2 validation — 2026-09-19
 
 ## Actual cause
 
