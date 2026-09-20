@@ -60,13 +60,30 @@ function openCard(doc, term) {
   panel.tabIndex = -1;
   let closed = false, revision = 0;
   function close() {
-    closed = true; revision++;
-    panel.remove(); cards.delete(doc);
-    doc.removeEventListener('keydown', keydown, true);
-    doc.defaultView.removeEventListener('unload', close);
-    if (previousFocus?.isConnected) previousFocus.focus();
+  closed = true;
+  revision++;
+
+  panel.remove();
+  cards.delete(doc);
+
+  doc.removeEventListener('keydown', keydown, true);
+  doc.removeEventListener('mousedown', outsideClick, true);
+  doc.defaultView.removeEventListener('unload', close);
+
+  if (previousFocus?.isConnected) previousFocus.focus();
+}
+  function keydown(e) {
+  if (e.key === 'Escape') {
+    e.preventDefault();
+    e.stopPropagation();
+    close();
   }
-  function keydown(e) { if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); close(); } }
+}
+  function outsideClick(e) {
+  if (!panel.contains(e.target)) {
+    close();
+  }
+}
   const header = element(doc, 'div', '', 'display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px');
   header.append(element(doc,'strong','Science Lens'), button(doc,'Close',close));
   const label = element(doc, 'div', core.classify(term) + ' · ' + term, 'font-size:12px;opacity:.75;margin-bottom:10px;overflow-wrap:anywhere');
@@ -82,6 +99,7 @@ function openCard(doc, term) {
   panel.append(header,label,body,footer);
   doc.body.append(panel); cards.set(doc,close);
   doc.addEventListener('keydown',keydown,true);
+  doc.addEventListener('mousedown', outsideClick, true);
   doc.defaultView.addEventListener('unload',close);
   panel.focus();
   const valid = token => active && !closed && revision === token;
