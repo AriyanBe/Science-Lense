@@ -2,7 +2,7 @@
 
 Look up unfamiliar terms on Wikipedia while reading a PDF in Zotero. Select a word or short phrase, click **Define · Wikipedia**, and read a concise definition in a panel inside the reader.
 
-**[Download Science Lens 0.1.1 (.xpi)](https://github.com/AriyanBe/Science-Lense/releases/download/v0.1.1/science-lens-0.1.1.xpi)** · [All releases](https://github.com/AriyanBe/Science-Lense/releases) · [Report an issue](https://github.com/AriyanBe/Science-Lense/issues)
+**[Download Science Lens 0.1.1 (.xpi)](https://github.com/AriyanBe/Science-Lense/releases/download/v0.1.1/science-lens-1.0.2.xpi)** · [All releases](https://github.com/AriyanBe/Science-Lense/releases) · [Report an issue](https://github.com/AriyanBe/Science-Lense/issues)
 
 ## Example
 
@@ -32,7 +32,7 @@ Windows and macOS have not been independently tested. Zotero versions outside 10
 
 ## Download and install
 
-1. Download **[science-lens-0.1.1.xpi](https://github.com/AriyanBe/Science-Lense/releases/download/v0.1.1/science-lens-0.1.1.xpi)**. You can also find it under **Assets** on the [release page](https://github.com/AriyanBe/Science-Lense/releases/latest).
+1. Download **[science-lens-1.0.2.xpi](https://github.com/AriyanBe/Science-Lense/releases/download/v1.0.2/science-lens-1.0.2xpi)**. You can also find it under **Assets** on the [release page](https://github.com/AriyanBe/Science-Lense/releases/latest).
 2. Open Zotero desktop and choose **Tools → Plugins**.
 3. Drag the downloaded `.xpi` file onto the Plugins window and complete Zotero's installation prompt.
 4. If Zotero requests a restart, restart it. Open a PDF and select a short term to find **Define · Wikipedia**.
@@ -92,7 +92,7 @@ cd Science-Lense
 python3 build.py
 ```
 
-The output is `dist/science-lens-0.1.1.xpi` for the current manifest version. Install that file using the instructions above. On systems where Python is invoked as `python` or `py`, substitute that command for `python3`.
+The output is `dist/science-lens-1.0.2.xpi` for the current manifest version. Install that file using the instructions above. On systems where Python is invoked as `python` or `py`, substitute that command for `python3`.
 
 The builder validates Zotero metadata, places plugin files at the archive root, checks ZIP integrity, and fixes archive timestamps and file permissions for reproducible output. Generated files in `dist/` are ignored by Git and distributed as release assets.
 
